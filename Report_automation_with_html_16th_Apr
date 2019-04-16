@@ -1,0 +1,44 @@
+
+$html = "<html><body>"  #start
+
+ $html +='<div style="border-radius: 10px;background-color: aqua;color: teal;font-size: 36px; padding: 30px;"><h1> CPU Utilization Report </h1></div>'
+
+
+$html += '<table border="2" width="100%"><tr style="background-color: aqua;color:brown; font-size: 18px;"><th> COMPTUER NAME  </th> <th> IP ADDRESS   </th>  <th>  CPU UTI. % </th>  <th> DATETIME  </th> </tr>' # header
+
+
+for($i =1 ; $i -lt 20 ; $i++){
+
+  $cname = "SJHSSGH11001"
+  $ip = "192.168.1.0"
+  
+  $cpu = $i*5
+  
+  $time = Get-Date
+
+
+  if($cpu -gt 78){
+
+        $html += '<tr style="background-color: red;">'
+
+  }
+  else {
+  
+        $html += "<tr>"
+
+  }
+  $html += "<td>"+  $cname +"</td>"
+  $html += "<td>"+  $ip +"</td>"
+  $html += "<td>"+ $cpu  +"</td>"
+  $html += "<td>"+  $time +"</td>"
+
+
+ $html += "</tr>"
+
+}
+
+$html += "<table></body></html>" #end 
+
+Write-Host $html
+
+
